@@ -11,7 +11,7 @@
 		C7CB2B3B295B2AA400249C7E /* CatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB2B3A295B2AA400249C7E /* CatTableCell.swift */; };
 		C7F7E20F2953348200846F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E20E2953348200846F6E /* AppDelegate.swift */; };
 		C7F7E2112953348200846F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E2102953348200846F6E /* SceneDelegate.swift */; };
-		C7F7E2132953348200846F6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E2122953348200846F6E /* ViewController.swift */; };
+		C7F7E2132953348200846F6E /* CatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E2122953348200846F6E /* CatVC.swift */; };
 		C7F7E2192953348200846F6E /* CoreData_Predicate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E2172953348200846F6E /* CoreData_Predicate.xcdatamodeld */; };
 		C7F7E21B2953348400846F6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F7E21A2953348400846F6E /* Assets.xcassets */; };
 		C7F7E21E2953348400846F6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F7E21C2953348400846F6E /* LaunchScreen.storyboard */; };
@@ -24,7 +24,7 @@
 		C7F7E20B2953348200846F6E /* CoreData Predicate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoreData Predicate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F7E20E2953348200846F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F7E2102953348200846F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C7F7E2122953348200846F6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C7F7E2122953348200846F6E /* CatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatVC.swift; sourceTree = "<group>"; };
 		C7F7E2182953348200846F6E /* CoreData_Predicate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData_Predicate.xcdatamodel; sourceTree = "<group>"; };
 		C7F7E21A2953348400846F6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7F7E21D2953348400846F6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		C7F7E227295335CC00846F6E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C7F7E2122953348200846F6E /* ViewController.swift */,
+				C7F7E2122953348200846F6E /* CatVC.swift */,
 				C7CB2B38295B299F00249C7E /* CatsTableVC.swift */,
 			);
 			path = ViewControllers;
@@ -178,7 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7F7E2132953348200846F6E /* ViewController.swift in Sources */,
+				C7F7E2132953348200846F6E /* CatVC.swift in Sources */,
 				C7F7E22A2953367600846F6E /* DataManager.swift in Sources */,
 				C7CB2B39295B299F00249C7E /* CatsTableVC.swift in Sources */,
 				C7CB2B3B295B2AA400249C7E /* CatTableCell.swift in Sources */,
