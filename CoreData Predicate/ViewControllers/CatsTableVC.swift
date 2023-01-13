@@ -9,14 +9,30 @@ import UIKit
 
 class CatsTableVC: UITableViewController {
 
+    let addCatButton: UIBarButtonItem = {
+        let item = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(addCat))
+        return item
+    }()
+    
+    
+    // MARK: - View Life Circe
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.tableView.register(CatTableCell.self, forCellReuseIdentifier: "Cell")
+        
+        addCatButton.target = self
+        navigationItem.rightBarButtonItem = addCatButton
+        navigationItem.title = "CATS!"
+    }
+    
+    
+    //MARK: - @objc
+    @objc func addCat() {
+        print("Cat been added!")
     }
 
+    
     // MARK: - TableView DataSource
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -33,11 +49,9 @@ class CatsTableVC: UITableViewController {
         return 300
     }
     
-    //MARK: - TableView Delegate
     
+    //MARK: - TableView Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        navigationController?.show(ViewController(), sender: self)
-//        navigationController?.pushViewController(ViewController(), animated: true)
         let vc = CatVC()
         present(vc, animated: true)
     }
