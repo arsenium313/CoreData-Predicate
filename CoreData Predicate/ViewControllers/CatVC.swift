@@ -10,31 +10,21 @@ import UIKit
 class CatVC: UIViewController {
     
     private let catImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "cat6")
-        return imageView
+        let iv = UIImageView()
+        return iv
     }()
     
-    private let textView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 20)
-        textView.text = """
-        1 - Color = Black
-        2 - Age = \(10)
-        3 - Breed = Сфинск
-        4 - Hearts Rate = ❤️❤️❤️❤️❤️
-        5 - Fun Rate = 😺😺😺😺😺
-        6 - Lovelines Rate = 😻😻😻😻😻
-        """
-        return textView
+    private let aboutCatTextView: UITextView = {
+        let tv = UITextView()
+        tv.font = UIFont.systemFont(ofSize: 25)
+        return tv
     }()
  
-    
     private let navBar: UINavigationBar = {
-        let navBar = UINavigationBar()
-        let navTitle = UINavigationItem(title: "CatName")
-        navBar.items = [navTitle]
-        return navBar
+        let nb = UINavigationBar()
+        let nt = UINavigationItem()
+        nb.items = [nt]
+        return nb
     }()
     
 
@@ -43,7 +33,6 @@ class CatVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         setupUI()
-        
     }
 
     
@@ -74,13 +63,41 @@ class CatVC: UIViewController {
     }
     
     private func setupTextView(){
-        self.view.addSubview(textView)
-        textView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(aboutCatTextView)
+        aboutCatTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        textView.topAnchor.constraint(equalTo: catImageView.bottomAnchor, constant: 20).isActive = true
-        textView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
-        textView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        aboutCatTextView.topAnchor.constraint(equalTo: catImageView.bottomAnchor, constant: 20).isActive = true
+        aboutCatTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        aboutCatTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        aboutCatTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
 }
 
+
+//MARK: - PassInfoAboutCat
+extension CatVC: PassInfoAboutCat {
+    func passInfo(name: String, picture: String, color: String, age: Int, heartRate: Int, funRate: Int, lovelinessRate: Int) {
+        let heartEmoji = "♥️"
+        let funEmoji = "😺"
+        let lovelinessEmoji = "😻"
+        
+        self.navBar.items![0].title = name
+        self.catImageView.image = UIImage(named: picture)
+        self.aboutCatTextView.text = """
+        Color = \(color)
+        Age = \(age) years
+        Hearts Rate = \(emojiConverter(heartEmoji, rate: heartRate))
+        Fun Rate = \(emojiConverter(funEmoji, rate: funRate))
+        Lovelines Rate = \(emojiConverter(lovelinessEmoji, rate: lovelinessRate))
+        """
+    }
+    
+    private func emojiConverter(_ emoji: String, rate: Int) -> String{
+        var rateString = ""
+        for _ in 1...rate {
+            rateString.append(emoji)
+        }
+        return rateString
+    }
+    
+}

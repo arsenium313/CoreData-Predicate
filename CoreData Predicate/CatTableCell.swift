@@ -19,7 +19,6 @@ class CatTableCell: UITableViewCell {
     
     var catImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "cat9")
         return view
     }()
     
@@ -35,7 +34,7 @@ class CatTableCell: UITableViewCell {
         
         nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
         nameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        nameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.3).isActive = true
+        nameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.28).isActive = true
     }
     
     private func setupCatImageView(){
