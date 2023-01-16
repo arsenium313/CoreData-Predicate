@@ -11,6 +11,7 @@
 		C786E99E2972B25200774BC8 /* Cat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C786E99C2972B25200774BC8 /* Cat+CoreDataProperties.swift */; };
 		C7CB2B39295B299F00249C7E /* CatsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB2B38295B299F00249C7E /* CatsTableVC.swift */; };
 		C7CB2B3B295B2AA400249C7E /* CatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB2B3A295B2AA400249C7E /* CatTableCell.swift */; };
+		C7E0C55E29756DE50009D9C1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = C7E0C55D29756DE50009D9C1 /* README */; };
 		C7F7E20F2953348200846F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E20E2953348200846F6E /* AppDelegate.swift */; };
 		C7F7E2112953348200846F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E2102953348200846F6E /* SceneDelegate.swift */; };
 		C7F7E2132953348200846F6E /* CatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E2122953348200846F6E /* CatVC.swift */; };
@@ -25,6 +26,7 @@
 		C786E99C2972B25200774BC8 /* Cat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C7CB2B38295B299F00249C7E /* CatsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableVC.swift; sourceTree = "<group>"; };
 		C7CB2B3A295B2AA400249C7E /* CatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTableCell.swift; sourceTree = "<group>"; };
+		C7E0C55D29756DE50009D9C1 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		C7F7E20B2953348200846F6E /* CoreData Predicate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoreData Predicate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F7E20E2953348200846F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F7E2102953348200846F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 		C7F7E2022953348200846F6E = {
 			isa = PBXGroup;
 			children = (
+				C7E0C55D29756DE50009D9C1 /* README */,
 				C7F7E20D2953348200846F6E /* CoreData Predicate */,
 				C7F7E20C2953348200846F6E /* Products */,
 			);
@@ -172,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E0C55E29756DE50009D9C1 /* README in Resources */,
 				C7F7E21E2953348400846F6E /* LaunchScreen.storyboard in Resources */,
 				C7F7E21B2953348400846F6E /* Assets.xcassets in Resources */,
 			);
