@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C786E99D2972B25200774BC8 /* Cat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C786E99B2972B25200774BC8 /* Cat+CoreDataClass.swift */; };
 		C786E99E2972B25200774BC8 /* Cat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C786E99C2972B25200774BC8 /* Cat+CoreDataProperties.swift */; };
-		C786E9A02972E5FB00774BC8 /* PredicateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C786E99F2972E5FB00774BC8 /* PredicateVC.swift */; };
 		C7CB2B39295B299F00249C7E /* CatsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB2B38295B299F00249C7E /* CatsTableVC.swift */; };
 		C7CB2B3B295B2AA400249C7E /* CatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB2B3A295B2AA400249C7E /* CatTableCell.swift */; };
 		C7F7E20F2953348200846F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7E20E2953348200846F6E /* AppDelegate.swift */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		C786E99B2972B25200774BC8 /* Cat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cat+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C786E99C2972B25200774BC8 /* Cat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cat+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C786E99F2972E5FB00774BC8 /* PredicateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateVC.swift; sourceTree = "<group>"; };
 		C7CB2B38295B299F00249C7E /* CatsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTableVC.swift; sourceTree = "<group>"; };
 		C7CB2B3A295B2AA400249C7E /* CatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTableCell.swift; sourceTree = "<group>"; };
 		C7F7E20B2953348200846F6E /* CoreData Predicate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CoreData Predicate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +99,6 @@
 			children = (
 				C7F7E2122953348200846F6E /* CatVC.swift */,
 				C7CB2B38295B299F00249C7E /* CatsTableVC.swift */,
-				C786E99F2972E5FB00774BC8 /* PredicateVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -191,7 +188,6 @@
 				C7F7E22A2953367600846F6E /* DataManager.swift in Sources */,
 				C7CB2B39295B299F00249C7E /* CatsTableVC.swift in Sources */,
 				C7CB2B3B295B2AA400249C7E /* CatTableCell.swift in Sources */,
-				C786E9A02972E5FB00774BC8 /* PredicateVC.swift in Sources */,
 				C7F7E20F2953348200846F6E /* AppDelegate.swift in Sources */,
 				C786E99E2972B25200774BC8 /* Cat+CoreDataProperties.swift in Sources */,
 				C7F7E2192953348200846F6E /* CoreData_Predicate.xcdatamodeld in Sources */,

@@ -17,42 +17,109 @@ class CatsTableVC: UITableViewController {
     private var cats: [Cat] = []
     weak var delegate: PassInfoAboutCat?
     
-    private let addCatButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(addCat))
-        return item
-    }()
+    private lazy var addCatButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCatBarButton))
+    private lazy var catPredicateButton = UIBarButtonItem(title: "PR", style: .plain, target: self, action: #selector(predicateCatBarButton))
+ 
+    private let predicateAlertController = UIAlertController(title: "Predicate", message: "Choose predicate option", preferredStyle: .actionSheet)
     
-    private let catPredicateButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: "PR", style: .plain, target: nil, action: #selector(predicateCat))
-        
-        return item
-    }()
     
     // MARK: - View Life Circe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(CatTableCell.self, forCellReuseIdentifier: "Cell")
-        self.cats = DataManager.shared.fetchAllCats()
+        self.cats = DataManager.shared.fetchCats()
         
-        addCatButton.target = self
-        catPredicateButton.target = self
-        navigationItem.rightBarButtonItems = [addCatButton, catPredicateButton]
-        navigationItem.title = "Amount of cats = \(cats.count)"
+        self.navigationItem.rightBarButtonItems = [addCatButton, catPredicateButton]
+        reloadTitle()
+        setupAlertController()
     }
     
     
     //MARK: - @objc
-    @objc private func addCat() {
-        let cat = DataManager.shared.createCat()
+    @objc private func addCatBarButton() {
+        let cat = DataManager.shared.createRandomCat()
         cats.append(cat)
-        navigationItem.title = "Amount of cats = \(cats.count)"
+        reloadTitle()
         tableView.reloadData()
     }
 
-    @objc private func predicateCat(){
-        let predicateVC = PredicateVC()
-        navigationController?.pushViewController(predicateVC, animated: true)
+    @objc private func predicateCatBarButton(){
+        self.present(predicateAlertController, animated: true)
     }
+    
+    //MARK: - Setup AlertControllert
+    private func setupAlertController() {
+        predicateAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        predicateAlertController.addAction(UIAlertAction(title: "Without sort, predicate", style: .default,handler: { _ in
+            self.cats =  DataManager.shared.fetchCats()
+            self.reloadTitle()
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "Name A-Z", style: .default,handler: { _ in
+            let sort = NSSortDescriptor(key: "name", ascending: true)
+            self.cats =  DataManager.shared.fetchCats(sort: [sort])
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "Name Z-A", style: .default,handler: { _ in
+            let sort = NSSortDescriptor(key: "name", ascending: false)
+            self.cats =  DataManager.shared.fetchCats(sort: [sort])
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "Age 1-15", style: .default,handler: { _ in
+            let sort = NSSortDescriptor(key: "age", ascending: true)
+            self.cats =  DataManager.shared.fetchCats(sort: [sort])
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "Age 15-1", style: .default,handler: { _ in
+            let sort = NSSortDescriptor(key: "age", ascending: false)
+            self.cats =  DataManager.shared.fetchCats(sort: [sort])
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "Name A-Z, Age 1-15", style: .default,handler: { _ in
+            let sortName = NSSortDescriptor(key: "name", ascending: true)
+            let sortAge = NSSortDescriptor(key: "age", ascending: true)
+            self.cats =  DataManager.shared.fetchCats(sort: [sortName, sortAge])
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "Name Begins with 'A'", style: .default,handler: { _ in
+            let predicate = NSPredicate(format: "name BEGINSWITH[c] 'a'")
+            self.cats =  DataManager.shared.fetchCats(predicate: predicate)
+            self.reloadTitle()
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "❤️😺😻 rate >= 3", style: .default,handler: { _ in
+            let predicate = NSCompoundPredicate(type: .and, subpredicates: [
+            NSPredicate(format: "heartRate >= %@", "\(3)"),
+            NSPredicate(format: "funRate >= %@", "\(3)"),
+            NSPredicate(format: "lovelinessRate >= %@", "\(3)")
+            ])
+            self.cats =  DataManager.shared.fetchCats(predicate: predicate)
+            self.reloadTitle()
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "❤️😺😻 rate < 3", style: .default,handler: { _ in
+            let predicate = NSCompoundPredicate(type: .and, subpredicates: [
+            NSPredicate(format: "heartRate < %@", "\(3)"),
+            NSPredicate(format: "funRate < %@", "\(3)"),
+            NSPredicate(format: "lovelinessRate < %@", "\(3)")
+            ])
+            self.cats =  DataManager.shared.fetchCats(predicate: predicate)
+            self.reloadTitle()
+            self.tableView.reloadData()
+        }))
+        predicateAlertController.addAction(UIAlertAction(title: "❤️ rate == 1", style: .default,handler: { _ in
+            let predicate = NSPredicate(format: "heartRate == %@","\(1)")
+            self.cats =  DataManager.shared.fetchCats(predicate: predicate)
+            self.reloadTitle()
+            self.tableView.reloadData()
+        }))
+    }
+    
+    private func reloadTitle(){
+        self.navigationItem.title = "Amount of cats = \(cats.count)"
+    }
+    
     
     // MARK: - TableView DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +147,8 @@ class CatsTableVC: UITableViewController {
         self.delegate = vc
         
         let cat = cats[indexPath.row]
-        delegate?.passInfo(name: cat.name, picture: cat.picture, color: cat.color, age: Int(cat.age), heartRate: Int(cat.heartRate), funRate: Int(cat.funRate), lovelinessRate: Int(cat.lovelinessRate))
+        delegate?.passInfo(name: cat.name, picture: cat.picture, color: cat.color, age: Int(cat.age),
+                           heartRate: Int(cat.heartRate), funRate: Int(cat.funRate), lovelinessRate: Int(cat.lovelinessRate))
         
         present(vc, animated: true)
     }

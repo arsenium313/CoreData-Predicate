@@ -9,22 +9,19 @@ import UIKit
 
 class CatVC: UIViewController {
     
-    private let catImageView: UIImageView = {
-        let iv = UIImageView()
-        return iv
-    }()
+    private let catImageView = UIImageView()
     
     private let aboutCatTextView: UITextView = {
-        let tv = UITextView()
-        tv.font = UIFont.systemFont(ofSize: 25)
-        return tv
+        let textView = UITextView()
+        textView.font = UIFont.systemFont(ofSize: 25)
+        return textView
     }()
  
     private let navBar: UINavigationBar = {
-        let nb = UINavigationBar()
-        let nt = UINavigationItem()
-        nb.items = [nt]
-        return nb
+        let navigationBar = UINavigationBar()
+        let navigationItem = UINavigationItem()
+        navigationBar.items = [navigationItem]
+        return navigationBar
     }()
     
 

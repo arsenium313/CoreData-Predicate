@@ -17,10 +17,7 @@ class CatTableCell: UITableViewCell {
         return label
     }()
     
-    var catImageView: UIImageView = {
-        let view = UIImageView()
-        return view
-    }()
+    var catImageView = UIImageView()
     
     //MARK: - SetupUI
     func setupUI(){
