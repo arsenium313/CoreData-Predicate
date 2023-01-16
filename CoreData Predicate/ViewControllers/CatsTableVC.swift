@@ -17,9 +17,10 @@ class CatsTableVC: UITableViewController {
     private var cats: [Cat] = []
     weak var delegate: PassInfoAboutCat?
     
-    private lazy var addCatButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCatBarButton))
-    private lazy var catPredicateButton = UIBarButtonItem(title: "PR", style: .plain, target: self, action: #selector(predicateCatBarButton))
- 
+    private lazy var addCatButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCatButtonAction))
+    private lazy var catPredicateButton = UIBarButtonItem(title: "PR", style: .plain, target: self, action: #selector(predicateCatButtonAction))
+    private lazy var removeAllCatsButton = UIBarButtonItem(title: "DEL", style: .plain, target: self, action: #selector(removeAllCatsButtonAction))
+    
     private let predicateAlertController = UIAlertController(title: "Predicate", message: "Choose predicate option", preferredStyle: .actionSheet)
     
     
@@ -29,23 +30,35 @@ class CatsTableVC: UITableViewController {
         self.tableView.register(CatTableCell.self, forCellReuseIdentifier: "Cell")
         self.cats = DataManager.shared.fetchCats()
         
-        self.navigationItem.rightBarButtonItems = [addCatButton, catPredicateButton]
+        self.navigationItem.rightBarButtonItems = [addCatButton, catPredicateButton, removeAllCatsButton]
         reloadTitle()
         setupAlertController()
     }
     
     
     //MARK: - @objc
-    @objc private func addCatBarButton() {
-        let cat = DataManager.shared.createRandomCat()
-        cats.append(cat)
+    @objc private func addCatButtonAction() {
+        for _ in 1...100{
+            let cat = DataManager.shared.createRandomCat()
+            cats.append(cat)
+        }
         reloadTitle()
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
 
-    @objc private func predicateCatBarButton(){
+    @objc private func predicateCatButtonAction(){
         self.present(predicateAlertController, animated: true)
     }
+    
+    @objc private func removeAllCatsButtonAction(){
+        for cat in cats {
+            DataManager.shared.delete(cat)
+        }
+        cats.removeAll()
+        reloadTitle()
+        self.tableView.reloadData()
+    }
+    
     
     //MARK: - Setup AlertControllert
     private func setupAlertController() {
@@ -98,11 +111,11 @@ class CatsTableVC: UITableViewController {
             self.reloadTitle()
             self.tableView.reloadData()
         }))
-        predicateAlertController.addAction(UIAlertAction(title: "❤️😺😻 rate < 3", style: .default,handler: { _ in
+        predicateAlertController.addAction(UIAlertAction(title: "❤️😺😻 rate == 5", style: .default,handler: { _ in
             let predicate = NSCompoundPredicate(type: .and, subpredicates: [
-            NSPredicate(format: "heartRate < %@", "\(3)"),
-            NSPredicate(format: "funRate < %@", "\(3)"),
-            NSPredicate(format: "lovelinessRate < %@", "\(3)")
+            NSPredicate(format: "heartRate == %@", "\(5)"),
+            NSPredicate(format: "funRate == %@", "\(5)"),
+            NSPredicate(format: "lovelinessRate == %@", "\(5)")
             ])
             self.cats =  DataManager.shared.fetchCats(predicate: predicate)
             self.reloadTitle()
