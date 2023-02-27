@@ -1,3 +1,4 @@
 # 21.12.2022
 
 simple save and fetch data with predicates
+Создает таблицу котов с параметрами, по параметрам есть фильтр и predicate

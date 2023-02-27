@@ -38,7 +38,7 @@ class CatsTableVC: UITableViewController {
     
     //MARK: - @objc
     @objc private func addCatButtonAction() {
-        for _ in 1...100{
+        for _ in 1...100 {
             let cat = DataManager.shared.createRandomCat()
             cats.append(cat)
         }
@@ -144,8 +144,8 @@ class CatsTableVC: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatTableCell
         cell.setupUI()
-        cell.nameLabel.text = cat.name
-        cell.catImageView.image = UIImage(named: cat.picture)
+        cell.catName = cat.name
+        cell.catImage = UIImage(named: cat.picture)
         return cell
     }
 

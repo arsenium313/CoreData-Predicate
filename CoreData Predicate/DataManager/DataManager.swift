@@ -57,11 +57,10 @@ class DataManager{
     }
     
     func createRandomCat() -> Cat {
-        let pictures = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6", "cat7", "cat8", "cat9", "cat10", "cat11"]
         let names = ["Archie", "Buck" , "Boomer", "Duke", "Felix", "Lucky", "Hunter", "Eva", "Flora", "Betty", "Alma", "Vivian", "Olive", "Lucy", "Lois", "Jane", "June", "Isadora", "Grace", "Enid"]
         let colors = ["Black", "White", "Red", "Green", "Brown", "Gray", "Blue"]
         
-        let picture = pictures.randomElement()!
+        let picture = "cat\(UInt.random(in: 1...17))"
         let name = names.randomElement()!
         let color = colors.randomElement()!
         
@@ -73,8 +72,8 @@ class DataManager{
         let cat = createCatEntity(picture: picture, name: name, color: color, lovelinessRate: lovelinessRate, heartRate: heartRate, funRate: funRate, age: age)
         saveContext()
         return cat
-        
     }
+    
     
     //MARK: - Fetch
     func fetchCats(sort: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) -> [Cat] {
@@ -82,7 +81,7 @@ class DataManager{
         var cats: [Cat] = []
         
         if let sort = sort { request.sortDescriptors = sort }
-        if let predicate = predicate {request.predicate = predicate}
+        if let predicate = predicate { request.predicate = predicate }
         
         do {
             try cats = persistentContainer.viewContext.fetch(request)
@@ -91,7 +90,6 @@ class DataManager{
         }
         
         return cats
-            
     }
     
 }

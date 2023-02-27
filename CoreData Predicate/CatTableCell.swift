@@ -9,7 +9,15 @@ import UIKit
 
 class CatTableCell: UITableViewCell {
 
-    var nameLabel: UILabel = {
+    var catName: String = "EmptyValue" {
+        willSet { nameLabel.text = newValue }
+    }
+    
+    var catImage: UIImage? {
+        willSet { catImageView.image = newValue }
+    }
+    
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -17,7 +25,8 @@ class CatTableCell: UITableViewCell {
         return label
     }()
     
-    var catImageView = UIImageView()
+    private let catImageView = UIImageView()
+    
     
     //MARK: - SetupUI
     func setupUI(){
@@ -25,23 +34,28 @@ class CatTableCell: UITableViewCell {
         setupCatImageView()
     }
     
-    private func setupNameLabel(){
+    private func setupNameLabel() {
         self.contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
-        nameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        nameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.28).isActive = true
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
+            nameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            nameLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.28)
+        ])
     }
     
-    private func setupCatImageView(){
+    private func setupCatImageView() {
         self.contentView.addSubview(catImageView)
         catImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        catImageView.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 10).isActive = true
-        catImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
-        catImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        catImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.9).isActive = true
+    
+        NSLayoutConstraint.activate([
+            catImageView.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 10),
+            catImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
+            catImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            catImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.9)
+        ])
     }
+    
     
 }
